@@ -1,0 +1,17 @@
+# This file starts the PostgreSQL database used by Prisma.
+services:
+  postgres:
+    image: postgres:16
+    container_name: day29_project_dashboard_db
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: project_dashboard
+    volumes:
+      - day29_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  day29_postgres_data:

@@ -1,0 +1,289 @@
+/*
+  Global styles for the Day 30 dashboard.
+  Demonstrates clean layout foundations while leaving animation work to Framer Motion.
+  CONCEPT: Accessibility - focus-visible styles make keyboard navigation easy to see.
+  CONCEPT: Loading skeletons - shimmer blocks support polished async states.
+*/
+:root {
+  --background: #f7f8fb;
+  --foreground: #172033;
+  --muted: #667085;
+  --border: #d9dee8;
+  --panel: #ffffff;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --danger: #dc2626;
+  --shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.task:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+.page {
+  min-height: 100vh;
+  padding: 24px;
+}
+
+.shell {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.button {
+  border: 0;
+  border-radius: 8px;
+  background: var(--primary);
+  color: white;
+  padding: 10px 14px;
+  font-weight: 700;
+}
+
+.button:hover {
+  background: var(--primary-dark);
+}
+
+.button.secondary {
+  background: #e8eefc;
+  color: var(--primary-dark);
+}
+
+.button.danger {
+  background: var(--danger);
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  background: white;
+}
+
+.textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.form-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.column {
+  min-height: 420px;
+  background: #eef2f8;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.task-list {
+  display: grid;
+  gap: 10px;
+  min-height: 260px;
+}
+
+.task {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.task:hover,
+.task:focus-visible {
+  border-color: var(--primary);
+}
+
+.empty-column {
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--muted);
+  margin: 0;
+  padding: 18px;
+  text-align: center;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.spread {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(15, 23, 42, 0.52);
+  padding: 20px;
+  z-index: 10;
+}
+
+.modal {
+  width: min(680px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.error {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.state-box {
+  background: var(--panel);
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  margin: 18px 0;
+  padding: 24px;
+  text-align: center;
+}
+
+.skeleton-wrap {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.skeleton {
+  min-height: 88px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #e8edf5, #f7f8fb, #e8edf5);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s infinite linear;
+}
+
+.status-pill {
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 8px 12px;
+  white-space: nowrap;
+}
+
+.status-pill.live {
+  background: #dcfce7;
+  border-color: #86efac;
+  color: #166534;
+}
+
+.status-pill.connecting,
+.status-pill.offline {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: #9a3412;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 780px) {
+  .page {
+    padding: 14px;
+  }
+
+  .header,
+  .spread {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
