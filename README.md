@@ -26,7 +26,7 @@ Open:
 
 Use the seeded demo account if you ran the seed script:
 - Email: `demo@example.com`
-- Password: `password123`
+- Password: `DemoPass!2026`
 
 ## Do We Need Frontend Only?
 

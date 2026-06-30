@@ -10,8 +10,8 @@ export default function HomePage() {
   return (
     <PageShell>
       <div className="shell" style={{ maxWidth: 460, paddingTop: 60 }}>
-        <p className="brand">ProjectFlow</p>
-        <p className="muted">A simple Jira/Trello-inspired dashboard polished for Day 30.</p>
+        <p className="brand">Project Management Dashboard</p>
+        <p className="muted">A Jira/Trello-inspired dashboard </p>
         <AuthForm />
       </div>
     </PageShell>

@@ -18,7 +18,7 @@ async function main() {
     data: {
       name: "Demo User",
       email: "demo@example.com",
-      passwordHash: await hashPassword("password123")
+      passwordHash: await hashPassword("DemoPass!2026")
     }
   });
 
